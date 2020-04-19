@@ -1,1 +1,2 @@
-# django-drf
+# Django RESR Framework Tutorial
+
