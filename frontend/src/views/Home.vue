@@ -1,18 +1,36 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+	<div class="home">
+		<div class="container">
+			<h1>Job Boards</h1>
+			<div v-for="job in jobs" :key="job.pk">
+				<h2>{{ job.company_name }}</h2>
+				<p>{{ job.job_title }}</p>
+				<hr>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import {apiService} from "../common/api.service.js"
 export default {
-  name: "Home",
-  components: {
-    HelloWorld
-  }
-};
+	name: "home",
+	data() {
+		return {
+			jobs: []
+		}
+	},
+	methods: {
+		getJobs() {
+			let endpoint = "api/jobs/"
+			apiService(endpoint).then(data => {
+				this.jobs.push(...data.results)
+			})	
+		}
+	},
+	created() {
+		this.getJobs()
+		console.log(this.jobs)
+	}
+}
 </script>
