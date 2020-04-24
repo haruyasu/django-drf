@@ -1,11 +1,13 @@
 <template>
-	<div class="home">
-		<div class="container">
-			<h1>Job Board</h1>
+	<div>
+		<v-container>
+
+
+
 			<div v-for="job in jobs" :key="job.pk">
 				<h2>
 					<router-link
-						:to="{ name: 'Job', params: { id: job.id } }"
+						:to="{ name: 'job', params: { id: job.id } }"
 						class="job-link"
 					>{{ job.company_name }}
 					</router-link>
@@ -13,7 +15,7 @@
 				<p>{{ job.job_title }}</p>
 				<hr>
 			</div>
-		</div>
+		</v-container>
 	</div>
 </template>
 

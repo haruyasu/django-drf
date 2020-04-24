@@ -1,14 +1,13 @@
 <template>
     <div>
-        <div class="container">
-            <h1>Job Detail</h1>
-            <h2>{{ job.company_name }}</h2>
-            <p>{{ job.job_title }}</p>
-            <p>{{ job.job_description }}</p>
-            <p>{{ job.salary }}</p>
-            <p>{{ job.prefectures }}</p>
-            <p>{{ job.city }}</p>
-        </div>
+        <v-container>
+            <h2 class="mb-5">{{ job.company_name }}</h2>
+            <p>職種：{{ job.job_title }}</p>
+            <p>内容：{{ job.job_description }}</p>
+            <p>給料：{{ job.salary }}円</p>
+            <p>都道府県：{{ job.prefectures }}</p>
+            <p>市町村：{{ job.city }}</p>
+        </v-container>
     </div>
 </template>
 
@@ -16,7 +15,7 @@
 import { apiService } from "../common/api.service.js"
 
 export default {
-    name: 'Job',
+    name: 'job',
     props: {
         id: {
             type: Number,
