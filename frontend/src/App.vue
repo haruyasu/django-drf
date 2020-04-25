@@ -1,7 +1,7 @@
 <template>
     <v-app>
         <v-app-bar color="success" dark app>
-            <v-toolbar-title to="/">求人情報</v-toolbar-title>
+            <v-toolbar-title>求人情報</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
                 <v-btn text to="/">ホーム</v-btn>

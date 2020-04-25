@@ -7,6 +7,17 @@
             <p>給料：{{ job.salary }}円</p>
             <p>都道府県：{{ job.prefectures }}</p>
             <p>市町村：{{ job.city }}</p>
+            <v-btn
+                color="success"
+                class="mr-2"
+				:to="{ name: 'editor', params: { id: job.id } }"
+            >編集
+            </v-btn>
+            <v-btn
+                color="error"
+                @click="deleteJobData"
+            >削除
+            </v-btn>
         </v-container>
     </div>
 </template>
@@ -36,7 +47,15 @@ export default {
             apiService(endpoint).then(data => {
                 this.job = data;
                 this.setPageTitle(data.company_name);
-            })
+            });
+        },
+        deleteJobData() {
+            let endpoint = `/api/jobs/${this.id}/`;
+            apiService(endpoint, "DELETE").then(() => {
+                this.$router.push({
+                    name: 'home'
+                });
+            });
         }
     },
     created() {
